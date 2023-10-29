@@ -14,8 +14,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @WebServlet(name = "FlightsListServlet", urlPatterns = "/flightslist")
@@ -52,7 +50,7 @@ public class UIFlightsListServlet extends HttpServlet {
         PageParamFactory pageParamFactory = new PageParamFactory();
 
         PageParam pageParam = pageParamFactory.getPageParam(req, this.service);
-        FlightFilters flightFilters = flightFiltersFactory.getFlightFilters(req, this.service);
+        FlightFilters flightFilters = flightFiltersFactory.getFlightFilters(req);
 
         req.setAttribute("pageParam", pageParam);
         req.setAttribute("flightFilters", flightFilters);

@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 
 public class FlightFiltersFactory {
 
-    public FlightFilters getFlightFilters(HttpServletRequest req, IFlightsService service) {
+    public FlightFilters getFlightFilters(HttpServletRequest req) {
         FlightFilters flightFilters = new FlightFilters();
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 

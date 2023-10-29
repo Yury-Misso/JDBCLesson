@@ -123,7 +123,7 @@ public class FlightFilters {
 
         FlightFilters that = (FlightFilters) o;
 
-        if (flightId != that.flightId) return false;
+        if (!Objects.equals(flightId, that.flightId)) return false;
         if (!Objects.equals(flightNo, that.flightNo)) return false;
         if (!Objects.equals(scheduledDeparture, that.scheduledDeparture))
             return false;
@@ -142,7 +142,7 @@ public class FlightFilters {
 
     @Override
     public int hashCode() {
-        int result = flightId;
+        int result = flightId != null ? flightId.hashCode() : 0;
         result = 31 * result + (flightNo != null ? flightNo.hashCode() : 0);
         result = 31 * result + (scheduledDeparture != null ? scheduledDeparture.hashCode() : 0);
         result = 31 * result + (scheduledArrival != null ? scheduledArrival.hashCode() : 0);

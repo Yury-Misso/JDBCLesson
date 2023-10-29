@@ -37,18 +37,17 @@ public class APIFlightsListServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         FlightFiltersFactory flightFiltersFactory = new FlightFiltersFactory();
         PageParamFactory pageParamFactory = new PageParamFactory();
 
         PageParam pageParam = pageParamFactory.getPageParam(req, this.service);
-        FlightFilters flightFilters = flightFiltersFactory.getFlightFilters(req, this.service);
+        FlightFilters flightFilters = flightFiltersFactory.getFlightFilters(req);
         List<Flight> flightsList = this.service.getPage(pageParam, flightFilters);
 
         JavaTimeModule javaTimeModule = new JavaTimeModule();
         javaTimeModule.addSerializer(LocalDate.class, new LocalDateSerializer(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         objectMapper.registerModule(javaTimeModule);
-//        System.out.println(objectMapper.writeValueAsString(flightsList));
 
         Map<String, List<Flight>> namedListFlights = new HashMap<>();
         namedListFlights.put("Flights", flightsList);
