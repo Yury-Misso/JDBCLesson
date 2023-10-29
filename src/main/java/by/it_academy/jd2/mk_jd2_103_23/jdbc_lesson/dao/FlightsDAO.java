@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
@@ -44,7 +46,7 @@ public class FlightsDAO implements IFlightsDAO {
              ResultSet resultSet = statement.executeQuery()) {
             List<Flight> flightList = new ArrayList<>();
             while (resultSet.next()) {
-                flightList.add(getFlightBuResultSet(resultSet));
+                flightList.add(getFlightByResultSet(resultSet));
             }
             return flightList;
         } catch (SQLException e) {
@@ -194,7 +196,7 @@ public class FlightsDAO implements IFlightsDAO {
             try (ResultSet resultSet = statement.executeQuery()) {
                 List<Flight> flightList = new ArrayList<>();
                 while (resultSet.next()) {
-                    flightList.add(getFlightBuResultSet(resultSet));
+                    flightList.add(getFlightByResultSet(resultSet));
                 }
                 return flightList;
             } catch (SQLException e) {
@@ -206,18 +208,42 @@ public class FlightsDAO implements IFlightsDAO {
         }
     }
 
-    private Flight getFlightBuResultSet(ResultSet resultSet) throws SQLException {
+    private Flight getFlightByResultSet(ResultSet resultSet) throws SQLException {
         Flight flight = new Flight();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ssX");
         flight.setFlightId(resultSet.getInt("flight_id"));
         flight.setFlightNo(resultSet.getString("flight_no"));
-        flight.setScheduledDeparture(resultSet.getString("scheduled_departure"));
-        flight.setScheduledArrival(resultSet.getString("scheduled_arrival"));
+
+        try {
+            flight.setScheduledDeparture(OffsetDateTime.parse(resultSet.getString("scheduled_departure"), formatter).toLocalDate());
+        } catch (RuntimeException e) {
+            //Error for parse date because 'scheduled_departure' in database is null
+        }
+
+        try {
+            flight.setScheduledArrival(OffsetDateTime.parse(resultSet.getString("scheduled_arrival"), formatter).toLocalDate());
+        } catch (RuntimeException e) {
+            //Error for parse date because 'scheduled_departure' in database is null
+        }
+
         flight.setDepartureAirport(resultSet.getString("departure_airport"));
         flight.setArrivalAirport(resultSet.getString("arrival_airport"));
         flight.setStatus(resultSet.getString("status"));
         flight.setAircraftCode(resultSet.getString("aircraft_code"));
-        flight.setActualDeparture(resultSet.getString("actual_departure"));
-        flight.setActualArrival(resultSet.getString("actual_arrival"));
+
+        try {
+            flight.setActualDeparture(OffsetDateTime.parse(resultSet.getString("actual_departure"), formatter).toLocalDate());
+        } catch (RuntimeException e) {
+            //Error for parse date because 'scheduled_departure' in database is null
+        }
+
+        try {
+            flight.setActualArrival(OffsetDateTime.parse(resultSet.getString("actual_arrival"), formatter).toLocalDate());
+        } catch (RuntimeException e) {
+            //Error for parse date because 'scheduled_departure' in database is null
+        }
+
         return flight;
     }
 }

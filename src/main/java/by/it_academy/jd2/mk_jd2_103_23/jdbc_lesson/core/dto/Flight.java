@@ -1,25 +1,29 @@
 package by.it_academy.jd2.mk_jd2_103_23.jdbc_lesson.core.dto;
 
+import com.fasterxml.jackson.annotation.JsonRootName;
+
+import java.time.LocalDate;
 import java.util.Objects;
 
+@JsonRootName("Flight")
 public class Flight {
     private int flightId;
     private String flightNo;
-    private String scheduledDeparture;
-    private String scheduledArrival;
+    private LocalDate scheduledDeparture;
+    private LocalDate scheduledArrival;
     private String departureAirport;
     private String arrivalAirport;
     private String status;
     private String aircraftCode;
-    private String actualDeparture;
-    private String actualArrival;
+    private LocalDate actualDeparture;
+    private LocalDate actualArrival;
 
     public Flight() {
     }
 
-    public Flight(int flightId, String flightNo, String scheduledDeparture, String scheduledArrival,
+    public Flight(int flightId, String flightNo, LocalDate scheduledDeparture, LocalDate scheduledArrival,
                   String departureAirport, String arrivalAirport, String status, String aircraftCode,
-                  String actualDeparture, String actualArrival) {
+                  LocalDate actualDeparture, LocalDate actualArrival) {
         this.flightId = flightId;
         this.flightNo = flightNo;
         this.scheduledDeparture = scheduledDeparture;
@@ -48,19 +52,19 @@ public class Flight {
         this.flightNo = flightNo;
     }
 
-    public String getScheduledDeparture() {
+    public LocalDate getScheduledDeparture() {
         return scheduledDeparture;
     }
 
-    public void setScheduledDeparture(String scheduledDeparture) {
+    public void setScheduledDeparture(LocalDate scheduledDeparture) {
         this.scheduledDeparture = scheduledDeparture;
     }
 
-    public String getScheduledArrival() {
+    public LocalDate getScheduledArrival() {
         return scheduledArrival;
     }
 
-    public void setScheduledArrival(String scheduledArrival) {
+    public void setScheduledArrival(LocalDate scheduledArrival) {
         this.scheduledArrival = scheduledArrival;
     }
 
@@ -96,19 +100,19 @@ public class Flight {
         this.aircraftCode = aircraftCode;
     }
 
-    public String getActualDeparture() {
+    public LocalDate getActualDeparture() {
         return actualDeparture;
     }
 
-    public void setActualDeparture(String actualDeparture) {
+    public void setActualDeparture(LocalDate actualDeparture) {
         this.actualDeparture = actualDeparture;
     }
 
-    public String getActualArrival() {
+    public LocalDate getActualArrival() {
         return actualArrival;
     }
 
-    public void setActualArrival(String actualArrival) {
+    public void setActualArrival(LocalDate actualArrival) {
         this.actualArrival = actualArrival;
     }
 

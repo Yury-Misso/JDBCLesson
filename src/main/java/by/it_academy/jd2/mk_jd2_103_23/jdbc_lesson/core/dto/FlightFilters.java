@@ -1,8 +1,10 @@
 package by.it_academy.jd2.mk_jd2_103_23.jdbc_lesson.core.dto;
 
+import com.fasterxml.jackson.annotation.JsonRootName;
+
 import java.time.LocalDate;
 import java.util.Objects;
-
+@JsonRootName("FlightFilters")
 public class FlightFilters {
     private Integer flightId;
     private String flightNo;

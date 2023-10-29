@@ -1,5 +1,8 @@
 package by.it_academy.jd2.mk_jd2_103_23.jdbc_lesson.core.dto;
 
+import com.fasterxml.jackson.annotation.JsonRootName;
+
+@JsonRootName("PageParam")
 public class PageParam {
     private int pageNo;
     private int sizePage;
