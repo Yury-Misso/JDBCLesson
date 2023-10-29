@@ -1,4 +1,3 @@
-<%--<%@ taglib uri="jakarta.tags.core" prefix="c" %>--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -11,8 +10,8 @@
         body, html {
             height: 100%;
             margin: 0;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Шрифт, аналогичный используемому Apple */
-            background-color: #f9f9f9; /* Светлый фон */
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #f9f9f9;
         }
 
         .home-button {
@@ -22,21 +21,20 @@
             padding: 10px 20px;
             border: none;
             border-radius: 12px;
-            background-color: #007aff; /* Синий цвет фона */
+            background-color: #007aff;
             color: white;
             font-size: 16px;
             cursor: pointer;
-            transition: background-color 0.3s; /* Анимация */
+            transition: background-color 0.3s;
         }
 
         .home-button:hover {
-            background-color: #005bb5; /* Темно-синий цвет при наведении */
+            background-color: #005bb5;
         }
 
         .center-container {
             display: flex;
             flex-direction: column;
-            /*justify-content: center;*/
             align-items: center;
             height: 100%;
         }
@@ -53,7 +51,7 @@
         }
 
         th {
-            background-color: #007aff; /* Синий цвет фона */
+            background-color: #007aff;
             color: white;
         }
     </style>

@@ -1,4 +1,3 @@
-<%--<%@ taglib uri="jakarta.tags.core" prefix="c" %>--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -18,7 +17,7 @@
             transition: border-color 0.3s ease;
             width: 100%;
             box-sizing: border-box;
-            -webkit-appearance: none; /* Убрать стандартные стили вебкита */
+            -webkit-appearance: none;
         }
 
         .my-style-input:focus {
@@ -29,8 +28,8 @@
         body, html {
             height: 100%;
             margin: 0;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Шрифт, аналогичный используемому Apple */
-            background-color: #f9f9f9; /* Светлый фон */
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #f9f9f9;
         }
 
         .home-button {
@@ -40,21 +39,20 @@
             padding: 10px 20px;
             border: none;
             border-radius: 12px;
-            background-color: #007aff; /* Синий цвет фона */
+            background-color: #007aff;
             color: white;
             font-size: 16px;
             cursor: pointer;
-            transition: background-color 0.3s; /* Анимация */
+            transition: background-color 0.3s;
         }
 
         .home-button:hover {
-            background-color: #005bb5; /* Темно-синий цвет при наведении */
+            background-color: #005bb5;
         }
 
         .center-container {
             display: flex;
             flex-direction: column;
-            /*justify-content: center;*/
             align-items: center;
             height: 100%;
         }
@@ -71,14 +69,14 @@
         }
 
         th {
-            background-color: #007aff; /* Синий цвет фона */
+            background-color: #007aff;
             color: white;
         }
 
         .pagination {
             display: flex;
             align-items: center;
-            justify-content: space-between; /* Используйте space-between, чтобы разделить пагинацию и выпадающий список */
+            justify-content: space-between;
             padding: 10px;
             font-family: 'San Francisco', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
@@ -109,30 +107,30 @@
 
         .page-size-selector {
             display: flex;
-            align-items: center; /* Выравнивание элементов по вертикали */
-            padding: 5px 10px; /* Добавьте отступы для соответствия стилю пагинации */
-            border-radius: 8px; /* Сглаживание углов для соответствия стилю пагинации */
-            cursor: pointer; /* Курсор в виде руки при наведении, как у ссылок в пагинации */
-            transition: background-color 0.3s ease; /* Плавный переход при наведении */
+            align-items: center;
+            padding: 5px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
         .page-size-selector:hover {
-            background-color: rgba(0, 122, 255, 0.1); /* Цвет фона при наведении, как у ссылок в пагинации */
+            background-color: rgba(0, 122, 255, 0.1);
         }
 
         .page-size-selector label {
-            color: #007aff; /* Цвет текста для соответствия стилю пагинации */
-            font-size: 16px; /* Размер шрифта */
-            margin-right: 10px; /* Отступ справа для разделения текста и выпадающего списка */
+            color: #007aff;
+            font-size: 16px;
+            margin-right: 10px;
         }
 
         .page-size-selector select {
-            color: #007aff; /* Цвет текста для соответствия стилю пагинации */
-            font-size: 16px; /* Размер шрифта */
-            padding: 5px 10px; /* Отступы для соответствия стилю пагинации */
-            border-radius: 8px; /* Сглаживание углов */
-            border: 1px solid #007aff; /* Цвет рамки для соответствия стилю пагинации */
-            background-color: #fff; /* Фоновый цвет */
+            color: #007aff;
+            font-size: 16px;
+            padding: 5px 10px;
+            border-radius: 8px;
+            border: 1px solid #007aff;
+            background-color: #fff;
         }
 
     </style>
@@ -142,7 +140,7 @@
         function myFunction() {
             let params = getAllParam();
 
-            let baseUrl = window.location.origin;  // это даст вам "http://example.com:8080" (если вы находитесь на порту 8080)
+            let baseUrl = window.location.origin;
             let endpoint = "/jdbclesson/flightslist";
             let fullUrl = baseUrl + endpoint;
 
@@ -191,7 +189,7 @@
             params.pageNo = obj;
 
 
-            let baseUrl = window.location.origin;  // это даст вам "http://example.com:8080" (если вы находитесь на порту 8080)
+            let baseUrl = window.location.origin;
             let endpoint = "/jdbclesson/flightslist";
             let fullUrl = baseUrl + endpoint;
 
